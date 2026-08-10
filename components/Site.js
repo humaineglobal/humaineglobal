@@ -1,0 +1,7 @@
+import Link from 'next/link';
+const links=[['Home','/'],['Services','/services'],['About','/about'],['Case Studies','/case-studies'],['Insights','/insights'],['Contact','/contact']];
+export function Mark(){return <div className="mark" aria-label="humAIne Global"><b>✦</b><small>hG</small></div>}
+export function Header({active}){return <header className="header"><Link href="/" aria-label="Home"><Mark/></Link><nav>{links.map(([label,href])=><Link className={active===label?'active':''} href={href} key={href}>{label}</Link>)}<Link className="navButton" href="/contact">Let's Talk</Link></nav></header>}
+export function CTA({title='Ready to simplify your most complex challenge?',text='Let’s talk about what’s possible when AI meets executive clarity.',label='Start a Conversation'}){return <section className="cta"><div className="shell ctaIn"><div><h2>{title}</h2><p>{text}</p></div><Link className="button" href="/contact">{label} <i>→</i></Link></div></section>}
+export function Footer(){return <footer className="shell"><div><Mark/><p>Removing AI Complexity. Amplifying Value. Enabling Growth.</p></div><div className="footLinks">{links.slice(1).map(([x,h])=><Link href={h} key={h}>{x}</Link>)}</div><a href="https://www.linkedin.com" aria-label="LinkedIn">in</a><small>© 2026 humAIne. All rights reserved.<span>Chief Marketing, Technology & Finance Officer</span></small></footer>}
+export function Page({active,children}){return <><Header active={active}/>{children}<Footer/></>}
