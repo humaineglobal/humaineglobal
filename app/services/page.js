@@ -1,3 +1,101 @@
-import {Page,CTA} from '../../components/Site';
-const data=[['01','Customized AI Solutions','Intelligent experiences built around the human on the other end.','Most AI deployments fail because they optimize for the system, not the person using it. humAIne designs conversational AI, agentic workflows, and intelligent automation that starts with the end customer’s needs — then works backward into your technology stack.',['Conversational AI & chatbot design','Agentic workflow automation','LLM integration & prompt engineering','AI-powered self-service experiences','Voice & multimodal AI interfaces','AI quality assurance & evaluation frameworks'],'Reduced handle time, higher first-contact resolution, and AI that customers actually want to use.'],['02','Customer 360 / Unified Customer Intelligence','One orchestrated view. Zero organizational excuses.','Fragmented data is the root cause of fragmented experiences. humAIne architects Customer 360 solutions that unify CRM, commerce, support, loyalty, and behavioral data into a single intelligence layer.',['Data architecture & integration strategy','CDP selection, implementation & optimization','Real-time customer profile orchestration','Personalization engine design','Cross-channel journey mapping & activation','Data governance & quality frameworks'],'A single source of truth that drives meaningful experiences and reduces organizational effort.'],['03','Fractional C-Suite','Senior leadership. Flexible engagement. Immediate impact.','Not every organization needs a full-time CMO, CTO, or CFO — but every organization needs the thinking one brings. humAIne provides strategic leadership, alignment, and accountability without permanent-hire overhead.',['Fractional CMO — go-to-market and demand','Fractional CTO — technology strategy and AI roadmap','Fractional CFO — financial strategy and growth','AI readiness assessments','Board & investor-ready strategy','Cross-functional operating cadence'],'Executive-level strategy and accountability, at the right time and scope.']];
-export default function Services(){return <Page active="Services"><main className="shell page"><em className="eyebrow">SERVICES</em><h1>What hum<span>AI</span>ne Builds</h1><p className="intro">Three practice areas. One through-line: eliminating complexity so your organization can focus on what matters — delivering value to the end customer.</p><div className="offerings">{data.map(([n,t,tag,copy,caps,out])=><article className="offering" key={n}><aside><b>{n}</b><h2>{t}</h2><p>{tag}</p></aside><div><p>{copy}</p><small>CAPABILITIES</small><ul>{caps.map(x=><li key={x}>{x}</li>)}</ul><div className="result"><small>OUTCOME</small><p>{out}</p></div></div></article>)}</div></main><section className="pale"><div className="shell"><h2>How an Engagement Works</h2><div className="steps">{[['01','Discovery'],['02','Diagnosis'],['03','Design'],['04','Delivery']].map(([n,x])=><article key={n}><b>{n}</b><h3>{x}</h3><p>A focused, clear process that identifies the highest-value opportunity and delivers lasting value.</p></article>)}</div></div></section><CTA title="Not Sure Which Service Fits?" text="Most engagements start with a single conversation. Bring your hardest challenge."/></Page>}
+import { Page } from '../../components/Site';
+
+const services = [
+  {
+    num: '01',
+    title: 'Customized AI Solutions',
+    tagline: 'Custom conversational AI that converts complexity into instant, human answers — built for enterprise scale.',
+    capabilities: [
+      'Conversational AI & chatbot design',
+      'LLM integration & prompt engineering',
+      'Voice & multimodal AI interfaces',
+      'Agentic workflow automation',
+      'AI-powered self-service experiences',
+      'AI quality assurance & evaluation frameworks',
+    ],
+    outcome: 'Reduced handle time, higher first-contact resolution, and AI that customers actually want to use.',
+  },
+  {
+    num: '02',
+    title: 'Customer 360 / Unified Customer Intelligence',
+    tagline: 'One orchestrated view. Zero organizational excuses.',
+    description: 'Fragmented data is the root cause of fragmented experiences. humAIne architects Customer 360 solutions that unify your CRM, commerce, support, loyalty, and behavioral data into a single intelligence layer — enabling personalization at scale, proactive service, and decisions grounded in reality.',
+    capabilities: [
+      'Data architecture & integration strategy',
+      'Real-time customer profile orchestration',
+      'Cross-channel journey mapping & activation',
+      'CDP selection, implementation & optimization',
+      'Personalization engine design',
+      'Data governance & quality frameworks',
+    ],
+    outcome: 'A single source of truth that drives meaningful experiences and measurably reduces organizational effort.',
+  },
+  {
+    num: '03',
+    title: 'Fractional C-Suite',
+    tagline: 'Senior leadership. Flexible engagement. Immediate impact.',
+    description: 'Not every organization needs a full-time CMO, CTO, or CFO — but every organization needs the thinking one brings. humAIne embeds as a fractional executive to provide strategic leadership, cross-functional alignment, and the accountability that drives results without the overhead of a permanent hire.',
+    capabilities: [
+      'Fractional CMO — go-to-market, brand, demand generation',
+      'Fractional CFO — financial strategy, unit economics, fundraising',
+      'Fractional CTO — technology strategy, AI roadmap, vendor selection',
+      'AI readiness assessments & transformation roadmaps',
+      'Cross-functional team alignment & operating cadence',
+    ],
+    outcome: 'Executive-caliber leadership embedded in your organization — accountable to outcomes, not headcount.',
+  },
+];
+
+export default function Services() {
+  return (
+    <Page active="Services">
+      {/* Hero */}
+      <section className="hero-gradient py-24">
+        <div className="shell">
+          <p className="eyebrow mb-4">SERVICES</p>
+          <h1 className="section-title text-white mb-6">What I Build</h1>
+          <p className="text-lg text-gray-300 max-w-2xl">
+            Three integrated disciplines. One operating model for growth.
+          </p>
+        </div>
+      </section>
+
+      {/* Services List */}
+      <section className="py-20">
+        <div className="shell space-y-16">
+          {services.map((service, idx) => (
+            <div key={idx} className="border-t border-gray-200 pt-12">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div>
+                  <p className="text-6xl font-bold text-gray-200 mb-4">{service.num}</p>
+                  <h2 className="text-2xl md:text-3xl font-bold text-navy mb-2">{service.title}</h2>
+                  <p className="text-royal font-semibold mb-4">{service.tagline}</p>
+                  {service.description && (
+                    <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                  )}
+                </div>
+                <div className="lg:col-span-2">
+                  <p className="eyebrow mb-4">CAPABILITIES</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                    {service.capabilities.map((cap, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <span className="w-5 h-5 bg-royal/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="w-2 h-2 bg-royal rounded-full" />
+                        </span>
+                        <span className="text-sm text-gray-700">{cap}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="eyebrow mb-4">OUTCOME</p>
+                  <div className="border-l-4 border-royal pl-6">
+                    <p className="text-gray-700 font-medium">{service.outcome}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </Page>
+  );
+}
