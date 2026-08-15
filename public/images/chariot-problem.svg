@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#0d1538"/>
+  <rect x="50" y="80" width="700" height="340" rx="12" fill="#1a2148" stroke="#3b82f6" stroke-width="2"/>
+  <text x="400" y="200" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="48" font-weight="bold">THE CHARIOT PROBLEM</text>
+  <text x="400" y="250" text-anchor="middle" fill="#60a5fa" font-family="Inter, sans-serif" font-size="20">LEADERSHIP &amp; SYSTEM EFFICIENCY</text>
+  <circle cx="200" cy="320" r="30" fill="#3b82f6"/>
+  <circle cx="300" cy="320" r="30" fill="#60a5fa"/>
+  <circle cx="400" cy="320" r="30" fill="#93c5fd"/>
+  <circle cx="500" cy="320" r="30" fill="#3b82f6"/>
+  <circle cx="600" cy="320" r="30" fill="#60a5fa"/>
+</svg>
