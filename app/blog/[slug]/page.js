@@ -246,7 +246,6 @@ export default async function Post({ params }) {
 }
 
 export async function generateStaticParams() {
-  const { getBlogSlugs } = await import('../../../lib/content');
-  const slugs = await getBlogSlugs();
+  const slugs = ['chariot-problem', 'brand-resistance', 'new-chess-game', 'iq-eq-sq', 'mdm-bottleneck', 'customer-360-margin', 'b2b-ai-strategies-fail', 'milk-and-oil', 'ai-culture', 'symphony-customer-engagement', 'website-concert-hall', 'rise-of-cmto'];
   return slugs.map(slug => ({ slug }));
 }
