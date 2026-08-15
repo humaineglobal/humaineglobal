@@ -1,1 +1,30 @@
-import {notFound} from 'next/navigation';import {Page,CTA} from '../../../components/Site'; const posts={ 'customer-360':['ARTICLE','Why Customer 360 Fails Before the Technology Does','Customer 360 is not a data platform. It is an organizational commitment to designing around the person on the other end of every interaction.','Most programs stall because technology implementation becomes the objective. The better question is: what decisions, experiences, and outcomes become possible when your organization sees one customer clearly?'], 'ai-readiness':['WHITE PAPER','The Executive Guide to AI Readiness','A practical framework for leaders who need a clear path from AI ambition to measurable enterprise value.','Readiness starts with opportunity, not models. Evaluate customer and business use cases, data maturity, operating ownership, risk controls, and the mechanism that turns a prototype into value.'], 'outcomes-over-outputs':['ARTICLE','Outcomes Over Outputs: A Better Measure of AI Value','The work is not finished when a model ships. It is finished when a meaningful business outcome changes.','The most useful metrics connect adoption and experience to lower cost, faster decisions, retention, revenue, and a durable capability inside the organization.']}; export default function Post({params}){let p=posts[params.slug];if(!p)return notFound();return <Page active="Insights"><article className="shell article"><em className="eyebrow">{p[0]}</em><h1>{p[1]}</h1><p className="deck">{p[2]}</p><hr/><p>{p[3]}</p><h2>Start with the end customer</h2><p>Complex systems become clearer when they are viewed through the needs of the customer and the decisions teams must make. This is where useful strategy begins.</p><p>As the Insights library grows, replace these starter articles by editing the post content and adding new entries in the project’s content structure.</p></article><CTA title="Want to explore this idea together?" text="Start with a conversation about the challenge in front of you."/></Page>}
+import { notFound } from 'next/navigation';
+import { Page, CTA } from '../../../components/Site';
+import { getInsightBySlug } from '../../../lib/content';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+
+export default async function Post({ params }) {
+  const { slug } = await params;
+  const post = getInsightBySlug(slug);
+  if (!post) return notFound();
+
+  const { frontmatter: p, content } = post;
+
+  return (
+    <Page active="Insights">
+      <article className="shell article">
+        <em className="eyebrow">{p.type?.toUpperCase() || 'ARTICLE'}</em>
+        <h1>{p.title}</h1>
+        <p className="deck">{p.description}</p>
+        <hr />
+        <MDXRemote source={content} />
+      </article>
+      <CTA title="Want to explore this idea together?" text="Start with a conversation about the challenge in front of you." label="Book a Discovery Call" />
+    </Page>
+  );
+}
+
+export async function generateStaticParams() {
+  const { getInsightSlugs } = await import('../../../lib/content');
+  return getInsightSlugs().map((slug) => ({ slug }));
+}

@@ -1,1 +1,27 @@
-import Link from 'next/link';import {Page} from '../../components/Site'; const posts=[['customer-360','ARTICLE','Why Customer 360 Fails Before the Technology Does','A practical framework for moving from fragmented records to an operating system for customer intelligence.','7 min read'],['ai-readiness','WHITE PAPER','The Executive Guide to AI Readiness','A disciplined assessment framework for identifying high-value AI use cases, data dependencies, governance requirements, and a path to value.','White paper'],['outcomes-over-outputs','ARTICLE','Outcomes Over Outputs: A Better Measure of AI Value','How to build AI programs around operational and commercial results rather than activity metrics.','5 min read']];export default function Insights(){return <Page active="Insights"><main className="shell page"><em className="eyebrow">INSIGHTS</em><h1>Ideas for Building<br/>What Matters</h1><p className="intro">Articles and white papers on human-centered AI, customer intelligence, and the disciplines of sustainable growth.</p><div className="postGrid">{posts.map(([slug,type,title,desc,meta])=><Link href={`/insights/${slug}`} key={slug}><small>{type}</small><h2>{title}</h2><p>{desc}</p><b>{meta} →</b></Link>)}</div></main></Page>}
+import Link from 'next/link';
+import { Page } from '../../components/Site';
+import { getAllInsights } from '../../lib/content';
+
+export default function Insights() {
+  const posts = getAllInsights();
+
+  return (
+    <Page active="Insights">
+      <main className="shell page">
+        <em className="eyebrow">INSIGHTS</em>
+        <h1>Ideas for Building<br />What Matters</h1>
+        <p className="intro">Articles and white papers on human-centered AI, customer intelligence, and the disciplines of sustainable growth.</p>
+        <div className="postGrid">
+          {posts.map(({ slug, frontmatter: p }) => (
+            <Link href={`/insights/${slug}`} key={slug}>
+              <small>{p.type?.toUpperCase() || 'ARTICLE'}</small>
+              <h2>{p.title}</h2>
+              <p>{p.description}</p>
+              <b>{p.readTime} →</b>
+            </Link>
+          ))}
+        </div>
+      </main>
+    </Page>
+  );
+}
