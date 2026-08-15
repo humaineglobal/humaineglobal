@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Page } from '../../../components/Site';
+import { Page, CTA, Footer } from '../../../components/Site';
 import { getBlogPost, getAllBlogPosts } from '../../../lib/content';
 import { notFound } from 'next/navigation';
 import { remarkGfm } from 'remark-gfm';

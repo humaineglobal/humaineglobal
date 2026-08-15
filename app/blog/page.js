@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mark } from '../../components/Mark';
+import { Mark, Footer } from '../../components/Site';
 import { getAllBlogPosts } from '../../lib/content';
 
 function BlogCard({ post }) {
@@ -51,20 +51,14 @@ export default async function Blog() {
           <Link href="/" aria-label="Home"><Mark /></Link>
           <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
             {['Home', 'Services', 'About', 'Case Studies', 'Blog', 'Contact'].map((label) => (
-              <Link
-                key={label}
-                href={`/${label === 'Home' ? '' : label.toLowerCase().replace(' ', '-')}`}
-                className={`relative text-sm font-medium tracking-wide transition-colors ${
-                  label === 'Blog' ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
-                }`}
+              <Link key={label} href={`/${label === 'Home' ? '' : label.toLowerCase().replace(' ', '-')}`}
+                className={`relative text-sm font-medium tracking-wide transition-colors ${label === 'Blog' ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
               >
                 {label}
                 {label === 'Blog' && <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-primary" />}
               </Link>
             ))}
-            <Link href="/contact" className="px-5 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-none hover:bg-primary/90 transition-colors">
-              Let's Talk
-            </Link>
+            <Link href="/contact" className="px-5 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-none hover:bg-primary/90 transition-colors">Let's Talk</Link>
           </nav>
         </div>
       </header>
@@ -76,11 +70,8 @@ export default async function Blog() {
             <div className="max-w-3xl">
               <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-6">INSIGHTS</p>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white font-heading">
-                Ideas for Building<br />What Matters
+                Insights<br />Practical perspectives on AI strategy, B2B growth, and the future of intelligent business.
               </h1>
-              <p className="text-xl md:text-2xl leading-relaxed font-light text-white/80">
-                Articles and white papers on human-centered AI, customer intelligence, and the disciplines of sustainable growth.
-              </p>
             </div>
           </div>
         </section>
@@ -108,35 +99,7 @@ export default async function Blog() {
         </section>
       </main>
 
-      <footer className="bg-background border-t border-border">
-        <div className="shell py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div className="md:col-span-2">
-              <Mark />
-              <p className="mt-4 text-sm text-muted-foreground max-w-sm">Making AI Human. Amplifying Value. Enabling Growth.</p>
-            </div>
-            <div>
-              <h4 className="text-foreground font-semibold mb-4">Pages</h4>
-              <div className="flex flex-col gap-2">
-                {['Home', 'Services', 'About', 'Case Studies', 'Blog', 'Contact'].map((label) => (
-                  <Link key={label} href={`/${label === 'Home' ? '' : label.toLowerCase().replace(' ', '-')}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{label}</Link>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h4 className="text-foreground font-semibold mb-4">Legal</h4>
-              <div className="flex flex-col gap-2">
-                <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground">Privacy Policy</Link>
-                <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground">Terms of Use</Link>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between gap-4">
-            <p className="text-xs text-muted-foreground">© 2026 humAIne. All rights reserved.</p>
-            <p className="text-xs text-muted-foreground">Chief Marketing, Technology & Finance Officer</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
