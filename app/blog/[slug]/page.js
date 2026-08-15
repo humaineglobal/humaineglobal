@@ -6,12 +6,12 @@ import { notFound } from 'next/navigation';
 
 export default async function Post({ params }) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPost(slug);
   if (!post) return notFound();
 
   const { frontmatter: p, content } = post;
 
-  const allPosts = getAllBlogPosts();
+  const allPosts = await getAllBlogPosts();
   const related = allPosts.filter(r => r.slug !== slug).slice(0, 3);
 
   return (
@@ -142,4 +142,10 @@ export default async function Post({ params }) {
       <CTA />
     </Page>
   );
+}
+
+export async function generateStaticParams() {
+  const { getBlogSlugs } = await import('../../../lib/content');
+  const slugs = await getBlogSlugs();
+  return slugs.map(slug => ({ slug }));
 }
