@@ -1,11 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
-  <rect width="800" height="500" fill="#0d1538"/>
-  <rect x="50" y="80" width="700" height="340" rx="12" fill="#1a2148" stroke="#3b82f6" stroke-width="2"/>
-  <text x="400" y="200" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="48" font-weight="bold">THE CHARIOT PROBLEM</text>
-  <text x="400" y="250" text-anchor="middle" fill="#60a5fa" font-family="Inter, sans-serif" font-size="20">LEADERSHIP &amp; SYSTEM EFFICIENCY</text>
-  <circle cx="200" cy="320" r="30" fill="#3b82f6"/>
-  <circle cx="300" cy="320" r="30" fill="#60a5fa"/>
-  <circle cx="400" cy="320" r="30" fill="#93c5fd"/>
-  <circle cx="500" cy="320" r="30" fill="#3b82f6"/>
-  <circle cx="600" cy="320" r="30" fill="#60a5fa"/>
+  <defs>
+    <linearGradient id="g_chariot-problem" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1538"/>
+      <stop offset="100%" stop-color="#1a2148"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g_chariot-problem)"/>
+  <rect x="40" y="80" width="720" height="340" rx="16" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.2" stroke-width="2"/>
+  <text x="400" y="220" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="48" font-weight="bold">THE CHARIOT PROBLEM</text>
+  <text x="400" y="270" text-anchor="middle" fill="white" fill-opacity="0.7" font-family="Inter, sans-serif" font-size="24">Leadership & System Efficiency</text>
+  <circle cx="200" cy="340" r="20" fill="#3b82f6" fill-opacity="0.8"/>
+  <circle cx="400" cy="340" r="20" fill="#60a5fa" fill-opacity="0.6"/>
+  <circle cx="600" cy="340" r="20" fill="#3b82f6" fill-opacity="0.8"/>
 </svg>
