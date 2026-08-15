@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Page active="Home" isHome>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative flex items-center overflow-hidden">
         {/* Layered background */}
         <div className="absolute inset-0 hero-gradient" />
         <div className="absolute inset-0 hero-glow-tr" aria-hidden="true" />
@@ -15,7 +15,7 @@ export default function Home() {
         <div className="absolute inset-0 hero-dots" aria-hidden="true" />
 
         {/* Content */}
-        <div className="shell relative z-10 py-20">
+        <div className="shell relative z-10 py-24 lg:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Column */}
             <div>
@@ -79,22 +79,23 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Stats Strip */}
-        <div className="absolute bottom-0 left-0 right-0 hero-strip border-t border-white/10">
-          <div className="shell py-6">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="py-4 px-6 border-r border-white/10 last:border-r-0">
-                <p className="text-xl sm:text-2xl font-bold text-white mb-1">20+ Years Digital Transformation Experience</p>
-                <p className="text-sm text-white/60">Years of Leadership in Digital Transformation, Marketing Excellence and Digital Growth.</p>
-              </div>
-              <div className="py-4 px-6 border-r border-white/10 last:border-r-0">
-                <p className="text-xl sm:text-2xl font-bold text-white mb-1">Marketing, Technology, Sales, Finance</p>
-                <p className="text-sm text-white/60">Mastered these disciplines over a period of 20 years bringing clarity to B2B Marketing & Sales.</p>
-              </div>
-              <div className="py-4 px-6">
-                <p className="text-xl sm:text-2xl font-bold text-white mb-1">AI-First, Human Centered</p>
-                <p className="text-sm text-white/60">Approach to Every Problem. Transformed growth in Global Organizations, startups, and scaling companies.</p>
-              </div>
+      </section>
+
+      {/* Stats Strip */}
+      <section className="hero-strip border-t border-white/10">
+        <div className="shell py-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="py-4 px-6 border-b sm:border-b-0 sm:border-r border-white/10 last:border-r-0">
+              <p className="text-xl sm:text-2xl font-bold text-white mb-1">20+ Years Digital Transformation Experience</p>
+              <p className="text-sm text-white/60">Years of Leadership in Digital Transformation, Marketing Excellence and Digital Growth.</p>
+            </div>
+            <div className="py-4 px-6 border-b sm:border-b-0 sm:border-r border-white/10 last:border-r-0">
+              <p className="text-xl sm:text-2xl font-bold text-white mb-1">Marketing, Technology, Sales, Finance</p>
+              <p className="text-sm text-white/60">Mastered these disciplines over a period of 20 years bringing clarity to B2B Marketing & Sales.</p>
+            </div>
+            <div className="py-4 px-6">
+              <p className="text-xl sm:text-2xl font-bold text-white mb-1">AI-First, Human Centered</p>
+              <p className="text-sm text-white/60">Approach to Every Problem. Transformed growth in Global Organizations, startups, and scaling companies.</p>
             </div>
           </div>
         </div>

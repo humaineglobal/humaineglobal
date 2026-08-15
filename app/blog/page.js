@@ -16,22 +16,18 @@ function BlogCard({ post }) {
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
         </div>
-        
         <div className="p-6 lg:p-8">
           {post.frontmatter.type && (
             <span className="inline-block px-3 py-1 text-xs font-bold tracking-wide uppercase text-primary bg-primary/10 rounded-full border border-primary/20">
               {post.frontmatter.type}
             </span>
           )}
-          
           <h3 className="mt-3 text-lg font-bold text-card-foreground group-hover:text-primary transition-colors leading-tight font-heading">
             {post.frontmatter.title}
           </h3>
-          
           <p className="mt-3 text-sm text-muted-foreground line-clamp-3 leading-relaxed">
             {post.frontmatter.description}
           </p>
-          
           <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
             <time dateTime={post.frontmatter.date}>{post.frontmatter.date}</time>
             <span className="text-border">•</span>
@@ -55,33 +51,54 @@ export default async function Blog() {
           <Link href="/" aria-label="Home"><Mark /></Link>
           <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
             {['Home', 'Services', 'About', 'Case Studies', 'Blog', 'Contact'].map((label) => (
-              <Link key={label} href={`/${label === 'Home' ? '' : label.toLowerCase().replace(' ', '-')}`}
-                className={`relative text-sm font-medium tracking-wide transition-colors ${label === 'Blog' ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
+              <Link
+                key={label}
+                href={`/${label === 'Home' ? '' : label.toLowerCase().replace(' ', '-')}`}
+                className={`relative text-sm font-medium tracking-wide transition-colors ${
+                  label === 'Blog' ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                }`}
               >
                 {label}
                 {label === 'Blog' && <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-primary" />}
               </Link>
             ))}
-            <Link href="/contact" className="px-5 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-none hover:bg-primary/90 transition-colors">Let's Talk</Link>
+            <Link href="/contact" className="px-5 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-none hover:bg-primary/90 transition-colors">
+              Let's Talk
+            </Link>
           </nav>
         </div>
       </header>
 
       <main className="flex-1 pt-16">
-        <section className="pt-36 pb-20 bg-gradient-to-b from-background to-muted">
+        {/* Hero */}
+        <section className="pt-36 pb-20 hero-gradient">
           <div className="shell">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold tracking-widest uppercase text-primary mb-6">INSIGHTS</p>
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-foreground font-heading">
+              <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-6">INSIGHTS</p>
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white font-heading">
                 Ideas for Building<br />What Matters
               </h1>
-              <p className="text-xl md:text-2xl leading-relaxed font-light text-muted-foreground">
+              <p className="text-xl md:text-2xl leading-relaxed font-light text-white/80">
                 Articles and white papers on human-centered AI, customer intelligence, and the disciplines of sustainable growth.
               </p>
             </div>
           </div>
         </section>
 
+        {/* Filter Bar */}
+        <section className="py-8 border-b border-border">
+          <div className="shell">
+            <div className="flex flex-wrap gap-3">
+              {['All', '#AI Strategy', '#AI agents', '#AI marketing', '#AI operations'].map((tag) => (
+                <button key={tag} className="px-3 py-1 text-sm font-medium bg-secondary text-secondary-foreground rounded-full hover:bg-primary/10 hover:text-primary transition-colors">
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Posts Grid */}
         <section className="py-20">
           <div className="shell">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
