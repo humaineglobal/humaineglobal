@@ -102,7 +102,7 @@ export default function Home() {
           
           {/* Hero Image */}
           <div className="relative mb-10 rounded-2xl overflow-hidden">
-            <img src="/images/team-meeting.jpg" alt="Executive team collaborating on AI strategy" className="w-full object-cover max-h-[340px] object-[center_30%]" />
+            <img src="/images/team-meeting.svg" alt="Executive team collaborating on AI strategy" className="w-full object-cover max-h-[340px] object-[center_30%]" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0d1538]/70 via-[#0d1538]/20 to-transparent pointer-events-none" />
             <div className="absolute inset-0 flex items-center px-10 pointer-events-none">
               <p className="text-2xl md:text-3xl font-bold max-w-sm leading-snug text-white">Where human expertise meets AI precision</p>
