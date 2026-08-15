@@ -30,14 +30,14 @@ export default async function Post({ params }) {
   const { frontmatter: p, content } = post;
 
   const allPosts = await getAllBlogPosts();
+  const currentTags = p.tags || [];
   const related = allPosts
     .filter(r => r.slug !== slug)
     .map(r => {
       let score = 0;
       if (r.frontmatter.type === p.type) score += 3;
-      const tags1 = p.tags || [];
-      const tags2 = r.frontmatter.tags || [];
-      tags1.forEach(t => { if (tags2.includes(t)) score += 1; });
+      const rTags = r.frontmatter.tags || [];
+      currentTags.forEach(t => { if (rTags.includes(t)) score += 1; });
       return { post: r, score };
     })
     .filter(item => item.score > 0)
