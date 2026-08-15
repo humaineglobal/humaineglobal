@@ -8,7 +8,7 @@ export default function Blog() {
   return (
     <Page active="Blog">
       {/* Hero */}
-      <section className="pt-36 pb-20 bg-white">
+      <section className="pt-36 pb-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="shell">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-royal mb-6">INSIGHTS</p>
@@ -53,7 +53,7 @@ export default function Blog() {
               >
                 <article className="h-full flex flex-col">
                   {/* Article Image */}
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-lg mb-4 bg-gradient-to-br from-[#0d1538] to-[#1a2148]">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl mb-5 bg-gradient-to-br from-[#0d1538] to-[#1a2148] shadow-lg">
                     <img 
                       src={post.frontmatter.image || '/images/article-placeholder.svg'} 
                       alt={post.frontmatter.title}
@@ -88,6 +88,26 @@ export default function Blog() {
                 </article>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter CTA */}
+      <section className="py-16 bg-gray-50 border-t border-gray-200">
+        <div className="shell">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0d1538] mb-4">Get Insights Like This in Your Inbox</h2>
+            <p className="text-gray-600 mb-8">Join leaders who receive practical perspectives on AI strategy, B2B growth, and the future of intelligent business.</p>
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input 
+                type="email" 
+                placeholder="Enter your work email" 
+                className="flex-1 px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal"
+              />
+              <button className="px-6 py-3 bg-royal text-white font-semibold rounded-lg hover:bg-royal-dark transition-colors whitespace-nowrap">
+                Subscribe Free
+              </button>
+            </div>
           </div>
         </div>
       </section>
