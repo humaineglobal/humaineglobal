@@ -4,10 +4,9 @@
 
 @layer base {
   :root {
-    --navy: #0a0f2d;
+    --navy: #0d1538;
     --navy-dark: #060920;
     --navy-light: #1a2148;
-    --navy-mid: #0d1538;
     --royal: #3b82f6;
     --royal-light: #60a5fa;
     --royal-dark: #2563eb;
@@ -30,10 +29,6 @@
 
   .nav-link {
     @apply relative text-sm font-medium tracking-wide transition-colors duration-200;
-  }
-
-  .hero-gradient {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy-light) 100%);
   }
 
   .text-gradient {

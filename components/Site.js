@@ -12,20 +12,22 @@ const links = [
 
 export function Header({ active }) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-navy/90 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
       <div className="shell flex items-center justify-between h-16">
         <Link href="/" aria-label="Home">
-          <Mark />
+          <Mark variant="dark" />
         </Link>
         <nav className="hidden md:flex items-center gap-8">
           {links.map(({ label, href }) => (
             <Link
               key={href}
               href={href}
-              className={`nav-link ${active === label ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+              className={`relative text-sm font-medium tracking-wide transition-colors duration-200 ${
+                active === label ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'
+              }`}
             >
               {label}
-              {active === label && <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-royal" />}
+              {active === label && <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-gray-900" />}
             </Link>
           ))}
           <Link href="/contact" className="px-5 py-2 bg-royal text-white text-sm font-semibold rounded-lg hover:bg-royal-dark transition-colors">
@@ -39,7 +41,7 @@ export function Header({ active }) {
 
 export function Footer() {
   return (
-    <footer className="bg-navy text-gray-400">
+    <footer className="bg-[#0d1538] text-gray-400">
       <div className="shell py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
@@ -83,7 +85,7 @@ export function Page({ active, children }) {
 
 export function CTA({ title = "Ready to simplify your most complex challenge?", text = "Let's talk about what's possible when AI meets executive clarity.", label = "Start a Conversation" }) {
   return (
-    <section className="bg-navy">
+    <section className="bg-[#0d1538]">
       <div className="shell py-20 text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{title}</h2>
         <p className="text-gray-400 mb-8 max-w-2xl mx-auto">{text}</p>
