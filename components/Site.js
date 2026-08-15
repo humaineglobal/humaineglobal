@@ -21,7 +21,7 @@ export function Header({ active, isHome }) {
         <Link href="/" aria-label="Home">
           <Mark variant={isHome ? 'light' : 'dark'} />
         </Link>
-        <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
+        <nav className="hidden md:flex items-center gap-10" aria-label="Main navigation">
           {links.map(({ label, href }) => (
             <Link
               key={href}

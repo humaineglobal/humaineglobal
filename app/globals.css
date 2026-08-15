@@ -248,4 +248,24 @@
     padding: 0.5rem 0.75rem;
     border: 1px solid hsl(var(--border));
   }
+
+  /* Card component */
+  .card {
+    @apply bg-card rounded-xl shadow-lg border border-border;
+  }
+
+  /* Pill component */
+  .pill {
+    @apply inline-flex items-center px-4 py-1.5 text-xs font-bold tracking-wide uppercase rounded-full;
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply text-xs font-bold tracking-widest uppercase text-muted-foreground;
+  }
+
+  /* Section title */
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold;
+  }
 }

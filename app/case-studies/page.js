@@ -45,42 +45,50 @@ export default function CaseStudies() {
       {/* Hero */}
       <section className="hero-gradient py-24">
         <div className="shell">
-          <p className="eyebrow mb-4">CASE STUDIES</p>
-          <h1 className="section-title text-white mb-6">Outcomes That Speak for Themselves</h1>
-          <p className="text-lg text-gray-300 max-w-2xl">
+          <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-4">CASE STUDIES</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading">Outcomes That Speak for Themselves</h1>
+          <p className="text-lg text-white/70 max-w-2xl">
             Real engagements. Measurable results. Each project represents a complex challenge transformed into a clear, high-value outcome.
           </p>
         </div>
       </section>
 
       {/* Case Studies */}
-      <section className="py-20">
+      <section className="py-20 bg-background">
         <div className="shell space-y-8">
           {caseStudies.map((cs, idx) => (
-            <div key={idx} className="card overflow-hidden">
+            <div key={idx} className="bg-card rounded-xl shadow-lg border border-border overflow-hidden">
               <div className="p-8 md:p-12">
+                {/* Header */}
                 <div className="flex items-center gap-4 mb-6">
-                  <span className="pill bg-royal/10 text-royal font-semibold">{cs.tag}</span>
-                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{cs.category}</span>
+                  <span className="inline-flex items-center px-4 py-1.5 text-xs font-bold tracking-wide uppercase text-primary bg-primary/10 rounded-full border border-primary/20">
+                    {cs.tag}
+                  </span>
+                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{cs.category}</span>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-navy mb-8">{cs.title}</h2>
+                
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 font-heading">{cs.title}</h2>
+                
+                {/* Challenge & Solution */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
-                    <p className="eyebrow mb-4">CHALLENGE</p>
-                    <p className="text-gray-600 leading-relaxed">{cs.challenge}</p>
+                    <p className="text-xs font-bold tracking-widest uppercase text-primary mb-4">CHALLENGE</p>
+                    <p className="text-muted-foreground leading-relaxed">{cs.challenge}</p>
                   </div>
                   <div>
-                    <p className="eyebrow mb-4">SOLUTION</p>
-                    <p className="text-gray-600 leading-relaxed">{cs.solution}</p>
+                    <p className="text-xs font-bold tracking-widest uppercase text-primary mb-4">SOLUTION</p>
+                    <p className="text-muted-foreground leading-relaxed">{cs.solution}</p>
                   </div>
                 </div>
-                <div className="border-t border-gray-100 pt-8">
-                  <p className="eyebrow mb-6">OUTCOMES</p>
+                
+                {/* Outcomes */}
+                <div className="border-t border-border pt-8">
+                  <p className="text-xs font-bold tracking-widest uppercase text-muted-foreground mb-6">OUTCOMES</p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     {cs.outcomes.map((o, i) => (
                       <div key={i}>
-                        <p className="text-3xl md:text-4xl font-bold text-royal mb-1">{o.value}</p>
-                        <p className="text-sm text-gray-600">{o.label}</p>
+                        <p className="text-3xl md:text-4xl font-bold text-primary mb-1">{o.value}</p>
+                        <p className="text-sm text-muted-foreground">{o.label}</p>
                       </div>
                     ))}
                   </div>
