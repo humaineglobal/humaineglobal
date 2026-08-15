@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Mark } from './Mark';
 
+export { Mark };
+
 const links = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
