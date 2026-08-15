@@ -1,15 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
   <defs>
-    <linearGradient id="g_rise-of-cmto" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="bg_rise-of-cmto" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
       <stop offset="100%" stop-color="#334155"/>
     </linearGradient>
+    <radialGradient id="glow_rise-of-cmto" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="800" height="500" fill="url(#g_rise-of-cmto)"/>
-  <rect x="40" y="80" width="720" height="340" rx="16" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.2" stroke-width="2"/>
-  <text x="400" y="220" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="48" font-weight="bold">TRANSFORMATIONAL</text>
-  <text x="400" y="270" text-anchor="middle" fill="white" fill-opacity="0.7" font-family="Inter, sans-serif" font-size="24">CMO</text>
-  <circle cx="200" cy="340" r="20" fill="#f59e0b" fill-opacity="0.8"/>
-  <circle cx="400" cy="340" r="20" fill="#f59e0b" fill-opacity="0.6"/>
-  <circle cx="600" cy="340" r="20" fill="#f59e0b" fill-opacity="0.8"/>
+  <rect width="800" height="500" fill="url(#bg_rise-of-cmto)"/>
+  <circle cx="400" cy="250" r="150" fill="url(#glow_rise-of-cmto)"/>
+  <text x="400" y="200" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="72">🚀</text>
+  <text x="400" y="280" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="42" font-weight="bold">TRANSFORMATIONAL</text>
+  <text x="400" y="320" text-anchor="middle" fill="white" fill-opacity="0.7" font-family="Inter, sans-serif" font-size="22">CMO</text>
+  <rect x="320" y="360" width="160" height="3" rx="2" fill="#f59e0b"/>
 </svg>
