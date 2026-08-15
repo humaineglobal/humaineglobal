@@ -4,6 +4,22 @@ import { getBlogPost, getAllBlogPosts } from '../../../lib/content';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
+  if (!post) return {};
+  
+  return {
+    title: `${post.frontmatter.title} | humAIne`,
+    description: post.frontmatter.description,
+    openGraph: {
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
+      images: post.frontmatter.image ? [{ url: post.frontmatter.image }] : [],
+    },
+  };
+}
+
 export default async function Post({ params }) {
   const { slug } = await params;
   const post = getBlogPost(slug);
@@ -11,20 +27,20 @@ export default async function Post({ params }) {
 
   const { frontmatter: p, content } = post;
 
-  // Get related articles (same type, excluding current)
+  // Get related articles
   const allPosts = getAllBlogPosts();
   const related = allPosts
-    .filter(r => r.frontmatter.type === p.type && r.slug !== slug)
+    .filter(r => r.slug !== slug)
     .slice(0, 3);
 
   return (
     <Page active="Blog">
       {/* Featured Image — Full Width */}
       {p.image && (
-        <section className="pt-16 bg-white">
+        <section className="pt-20 bg-white">
           <div className="shell">
             <div className="max-w-5xl mx-auto">
-              <div className="rounded-2xl overflow-hidden shadow-xl border border-border">
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img 
                   src={p.image} 
                   alt={p.title}
@@ -44,15 +60,19 @@ export default async function Post({ params }) {
         <div className="shell">
           <div className="max-w-3xl mx-auto">
             {/* Article Header */}
-            <div className="mb-8">
-              <span className="inline-block px-3 py-1 bg-primary/10 text-primary font-semibold text-sm rounded-full mb-4">
-                {p.type}
-              </span>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4 font-heading">
+            <header className="mb-12 pb-8 border-b border-border">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="px-3 py-1 bg-primary/10 text-primary font-semibold text-sm rounded-full">
+                  {p.type}
+                </span>
+              </div>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6 font-heading">
                 {p.title}
               </h1>
-              <p className="text-lg text-muted-foreground mb-6">{p.description}</p>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground border-b border-border pb-6">
+              <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+                {p.description}
+              </p>
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-2">
                   <span className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-xs font-bold">S</span>
                   {p.author}
@@ -62,15 +82,24 @@ export default async function Post({ params }) {
                 <span>•</span>
                 <span>{p.readTime}</span>
               </div>
-            </div>
+            </header>
 
-            {/* Article Body */}
-            <div className="rich-text">
+            {/* Article Body — Rich Typography */}
+            <div className="prose prose-lg max-w-none 
+              prose-headings:text-foreground prose-headings:font-bold prose-headings:font-heading
+              prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+              prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6
+              prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+              prose-strong:text-foreground
+              prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:rounded-r-lg prose-blockquote:py-3 prose-blockquote:px-6 prose-blockquote:not-italic
+              prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-2
+              prose-li:text-gray-700
+            ">
               <MDXRemote source={content} />
             </div>
 
             {/* Explore Topics */}
-            <div className="mt-12 pt-8 border-t border-border">
+            <div className="mt-16 pt-8 border-t border-border">
               <p className="text-sm font-bold text-foreground mb-4 uppercase tracking-wider">Explore Topics</p>
               <div className="flex flex-wrap gap-3">
                 {['#AI Strategy', '#Leadership', '#B2B Growth', '#Marketing', '#Customer Experience', '#Innovation'].map((tag) => (
@@ -86,7 +115,7 @@ export default async function Post({ params }) {
             </div>
 
             {/* Author Bio */}
-            <div className="mt-12 p-6 bg-secondary rounded-2xl border border-border">
+            <div className="mt-12 p-8 bg-secondary rounded-2xl border border-border">
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-xl font-bold flex-shrink-0">
                   S
@@ -103,7 +132,7 @@ export default async function Post({ params }) {
 
       {/* Related Articles */}
       {related.length > 0 && (
-        <section className="py-16 bg-secondary border-t border-border">
+        <section className="py-20 bg-secondary border-t border-border">
           <div className="shell">
             <div className="text-center mb-12">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">Continue Reading</p>
@@ -132,18 +161,18 @@ export default async function Post({ params }) {
       )}
 
       {/* Newsletter CTA */}
-      <section className="py-16 hero-gradient">
+      <section className="py-20 hero-gradient">
         <div className="shell">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 font-heading">Get Insights Like This in Your Inbox</h2>
-            <p className="text-white/70 mb-8">Join leaders who receive practical perspectives on AI strategy, B2B growth, and the future of intelligent business.</p>
+            <p className="text-white/70 mb-8 text-lg">Join leaders who receive practical perspectives on AI strategy, B2B growth, and the future of intelligent business.</p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input 
                 type="email" 
                 placeholder="Enter your work email" 
-                className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-md text-white placeholder-white/50 focus:outline-none focus:border-primary"
+                className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-primary"
               />
-              <button className="px-6 py-3 bg-white text-primary font-semibold rounded-md hover:bg-white/90 transition-colors whitespace-nowrap">
+              <button className="px-6 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors whitespace-nowrap">
                 Subscribe Free
               </button>
             </div>
