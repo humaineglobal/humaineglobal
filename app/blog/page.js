@@ -68,29 +68,34 @@ export default async function Blog() {
         <section className="pt-36 pb-20 hero-gradient">
           <div className="shell">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-6">INSIGHTS</p>
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white font-heading">
-                Insights<br />Practical perspectives on AI strategy, B2B growth, and the future of intelligent business.
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white font-heading">
+                Insights
               </h1>
+              <p className="text-xl md:text-2xl leading-relaxed font-light text-white/80 mt-6">
+                Practical perspectives on AI strategy, B2B growth, and the future of intelligent business.
+              </p>
             </div>
           </div>
         </section>
 
         {/* Filter Bar */}
-        <section className="py-8 border-b border-border">
+        <section className="py-8 border-b border-border bg-white">
           <div className="shell">
-            <div className="flex flex-wrap gap-3">
-              {['All', '#AI Strategy', '#AI agents', '#AI marketing', '#AI operations'].map((tag) => (
-                <button key={tag} className="px-3 py-1 text-sm font-medium bg-secondary text-secondary-foreground rounded-full hover:bg-primary/10 hover:text-primary transition-colors">
-                  {tag}
-                </button>
-              ))}
+            <div className="flex flex-wrap items-center gap-4">
+              <span className="text-sm text-muted-foreground">Filter by category:</span>
+              <div className="flex flex-wrap gap-2">
+                {['All', '#AI Strategy', '#AI agents', '#AI marketing', '#AI operations'].map((tag) => (
+                  <button key={tag} className="px-3 py-1 text-sm font-medium bg-secondary text-secondary-foreground rounded-full hover:bg-primary/10 hover:text-primary transition-colors">
+                    {tag}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* Posts Grid */}
-        <section className="py-20">
+        <section className="py-20 bg-white">
           <div className="shell">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {posts.map((post) => <BlogCard key={post.slug} post={post} />)}

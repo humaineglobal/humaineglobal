@@ -51,28 +51,18 @@ export default function Home() {
             
             {/* Right Column */}
             <div className="hidden lg:block relative">
-              <div className="relative w-full max-w-md ml-auto">
-                <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-3xl scale-90" />
-                
-                <div className="relative bg-gradient-to-br from-white/10 to-transparent rounded-2xl overflow-hidden border border-white/10 backdrop-blur-sm">
-                  <div className="aspect-[4/5] relative flex items-center justify-center">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-                    <div className="relative z-10 text-center p-8">
-                      <div className="w-32 h-32 mx-auto mb-6 relative">
-                        <div className="absolute inset-0 bg-primary/30 rounded-full blur-2xl" />
-                        <div className="relative w-full h-full bg-gradient-to-br from-primary to-blue-700 rounded-full flex items-center justify-center border-4 border-white/20">
-                          <span className="text-white text-4xl font-bold">AI</span>
-                        </div>
-                      </div>
-                      <p className="text-white/60 text-sm">Human meets AI</p>
-                    </div>
-                  </div>
-                  
-                  {/* Stats Card */}
-                  <div className="absolute bottom-4 left-4 px-5 py-3 hero-strip rounded-xl border border-white/10">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/60 mb-1">Avg. client outcome</p>
-                    <p className="text-2xl font-bold text-white">3.2× ROI</p>
-                  </div>
+              <div className="relative w-full max-w-lg ml-auto">
+                <img
+                  src="/images/human-ai.svg"
+                  alt="Human-AI Collaboration"
+                  width={1200}
+                  height={900}
+                  className="w-full h-auto rounded-2xl"
+                />
+                {/* Stats Card */}
+                <div className="absolute bottom-4 left-4 px-5 py-3 hero-strip rounded-xl border border-white/10">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/60 mb-1">Avg. client outcome</p>
+                  <p className="text-2xl font-bold text-white">3.2× ROI</p>
                 </div>
               </div>
             </div>
