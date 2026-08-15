@@ -8,7 +8,7 @@ export default function Blog() {
   return (
     <Page active="Blog">
       {/* Hero */}
-      <section className="pt-36 pb-20 bg-white">
+      <section className="pt-36 pb-20 bg-background">
         <div className="shell">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-6">INSIGHTS</p>
@@ -52,7 +52,7 @@ export default function Blog() {
                 className="group block"
               >
                 <article className="h-full flex flex-col">
-                  {/* Article Image — Clickable */}
+                  {/* Article Image */}
                   <div className="relative aspect-[16/10] overflow-hidden rounded-lg mb-4 bg-secondary">
                     <img 
                       src={post.frontmatter.image || '/images/article-placeholder.svg'} 
